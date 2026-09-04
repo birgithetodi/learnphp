@@ -1,25 +1,12 @@
 <?php
-$test = 10; //integer
-$test = 10 + 2;
-$test = 10 - 2;
-$test = 10 * 2;
-$test = 10 / 2;
-$test = $test -1;
-
-$test -= 1; //*, +, -, /
-$test /= 1; 
-$test += 1; 
-$test *= 1;
-
-$test = 10 % 3;
-$test++; //$test += 1; is the same thing
-$test--;
-
-$test = 10 + 2 - 3 * 2 / 4;
-$test =(10 + (2 - 3) * 4) / 2;
-$test %= 2;
-$test **= 3;
-$test = 2 ** 4;
-
-$test =  sqrt(16);
-var_dump($test);
+$test = 'hello';
+$test = 'hello' . 'world'; //. combines texts
+$test .= '!';
+$name = 'Birgithe';
+$age = 18;
+$test = $name . 'is' . $age . 'years old';
+$test = "$name is $age years old";
+$test = "hello\n\nworld";
+$letter = 'a';
+$letter++; //++ increases a 1 time makeing it b
+var_dump($letter);
