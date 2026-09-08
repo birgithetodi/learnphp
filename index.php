@@ -1,38 +1,42 @@
 <?php
-$num = 10;
-if($num > 5) {
-    var_dump('Bigger');
+for ($i = 0; $i < 10; $i++) {
+   var_dump($i);
 }
 
-if($num > 5) {
-    var_dump('Bigger');
-} else {
-    var_dump('Smaller');
+for ($i = 9; $i >= 0; $i--) {
+   var_dump($i);
 }
 
-if($num > 5) {
-    var_dump('Bigger');
-} elseif($num == 5) {
-    var_dump('Smaller');
-} else {
-    var_dump('Equal');
+for ($i = 2; $i <1000000; $i--) {
+   var_dump($i);
 }
 
-$i = 1; 
+for ($i = 2; $i <1_000_000; $i*=2) {
+   var_dump($i);
+}
 
-switch($num) {
-    case 1:
-        var_dump('yx');
-        break;
-    case 2:
-        var_dump('kaks');
-        break;
-        case 3:
-        var_dump('kolm');
-        break;
-    case 4:
-        var_dump('kolm neli');
-        break;
-    default:
-        var_dump('dunno');
+$time = $time();
+$n = 0;
+while($time+1 < $time()) {
+   $n++;
+}
+var_dump($time);
+
+while(false){
+    var_dump('WHILE');
+}
+do {
+        var_dump('DO');
+}while(false);
+
+while(true){
+    var_dump('DO');
+}while(true);
+
+//while(true){
+//    var_dump('DO');
+
+$fruits =['Apple', 'Banana', 'Cherry'];
+foreach($fruits as $key=>$fruit) {
+    var_dump($fruit);
 }
