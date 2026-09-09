@@ -1,9 +1,9 @@
 <?php
  
 class Box {
-    public $width;
-    public $height;
-    public $length;
+    public int $width;
+    private int $height;
+    protected int $length;
     public $isOpen = false;
     public $hasBeenOpened = false;
  
@@ -20,13 +20,29 @@ class Box {
     }
 }
  
-$num1 = 1;
-$num2 = &$num1; //pointer pass by reference
-$num1 = 2;
-var_dump($num1, $num2);
+class MetalBox extends Box {
+public $weight;
  
-$box1 = new Box();
-$box1->width = 1;
-$box2 = clone $box1; //use clone to create new object
-$box2->width = 2;
-var_dump($box1, $box2);
+ 
+public function mass(){
+return $this->volume() * $this->weight;
+    }
+ 
+    public function test() {
+var_dump($this->length);
+    }
+ 
+public function setHeight($height) {
+if(height > 0) {
+    $this->height = height;
+}
+    }
+    public function getHeight() {
+        return $this->height;
+    }
+}
+ 
+$metal1 = new MetalBox();
+var_dump($metal1->width);
+$metal1->height = 1;
+var_dump($metal1);
