@@ -1,42 +1,51 @@
 <?php
-for ($i = 0; $i < 10; $i++) {
-   var_dump($i);
+function hello(): void {
+   var_dump('Hello');
+}
+$hi = hello();
+var_dump($hi);
+hello();
+hello();
+
+function helloName() {
+   var_dump("Hello, $name!");
 }
 
-for ($i = 9; $i >= 0; $i--) {
-   var_dump($i);
+helloName('Birgithe');
+helloName('Trevor');
+
+function helloNameAndAge($name, $age) {
+   var_dump("Hello, $name! You are $age years old!");
 }
 
-for ($i = 2; $i <1000000; $i--) {
-   var_dump($i);
+helloNameAndAge('Birgithe, 18');
+helloNameAndAge('Trevor, 18');
+
+helloName();
+
+$test = function() {
+
+};
+var_dump($test);
+
+$numbers = [1, 2, 3, 4, 5];
+array_map(function($n){
+   return $n * $n;
+}, $numbers);
+$squares = array_map(fn ($n) => $n * $n, $numbers);
+var_dump($sqares);
+
+
+function cube(int $a): int|string{
+   if($a < 0){
+      return 'NAHHH NEGATIVE!';
+   } else {
+      return $a * $a * $a;
+   }
+   var_dump('BLAAAA');
 }
+var_dump(cube(4));
 
-for ($i = 2; $i <1_000_000; $i*=2) {
-   var_dump($i);
-}
-
-$time = $time();
-$n = 0;
-while($time+1 < $time()) {
-   $n++;
-}
-var_dump($time);
-
-while(false){
-    var_dump('WHILE');
-}
-do {
-        var_dump('DO');
-}while(false);
-
-while(true){
-    var_dump('DO');
-}while(true);
-
-//while(true){
-//    var_dump('DO');
-
-$fruits =['Apple', 'Banana', 'Cherry'];
-foreach($fruits as $key=>$fruit) {
-    var_dump($fruit);
-}
+$answer = cube(5);
+$text = "Cube of 5 is $answer";
+echo $text;
