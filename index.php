@@ -1,37 +1,32 @@
 <?php
-
+ 
 class Box {
-   public $width;
-   public $height;
-   public $length;
-   public $isOpen = false;
-   public $hasBeenOpened = false;
-
-   public function open() {
-      $this->isOpen = true;
-      $this->hasBeenOpened = true;
-   }
-   public function closed() {
-      $this->isOpen = false;
-   }
-
-   public function volume() {
-      return $this->height * $this->length * $this->width;
-   }
+    public $width;
+    public $height;
+    public $length;
+    public $isOpen = false;
+    public $hasBeenOpened = false;
+ 
+     public function open() {
+        $this->isOpen = true;
+        $this->hasBeenOpened = true;
+    }
+ 
+    public function close() {
+        $this->isOpen = false;
+    }
+    public function volume() {
+        return $this->height * $this->length * $this->width;
+    }
 }
-
+ 
+$num1 = 1;
+$num2 = &$num1; //pointer pass by reference
+$num1 = 2;
+var_dump($num1, $num2);
+ 
 $box1 = new Box();
-$box1->width = 10;
-$box1->height = 20;
-$box1->length = 30;
-$box1->open();
-var_dump($box1);
-var_dump($box1->volume());
-
-$box2 = new Box();
-$box2->width = 30;
-$box2->height = 40;
-$box2->length = 50;
-$box2->open();
-var_dump($box2);
-var_dump($box2->volume());
+$box1->width = 1;
+$box2 = clone $box1; //use clone to create new object
+$box2->width = 2;
+var_dump($box1, $box2);
