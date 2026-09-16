@@ -9,100 +9,145 @@ function dump(...$vars)
     echo '</pre>';
 }
 
-switch ($_SERVER['REQUEST_URI']) {
-    case '/':
+spl_autoload_register(function ($class){
+    $class = substr($class,4);
+    $class = str_replace('\\', '/', $class);
+    require_once __DIR__ . "/../src/$class.php";
+});
+
+use App\Router;
+
+Router::addRoute('/', function () {
         $title = 'World';
         $posts = [
             [
                 'title' => 'Some world title 1',
                 'content' => 'Some world content 1',
-                'date' => 'June 26, 2008',
-                'author' => 'Biku'
+                'date' => 'January 1, 2021',
+                'author' => 'Pets',
             ],
             [
                 'title' => 'Some world title 2',
                 'content' => 'Some world content 2',
-                'date' => 'January 5, 2007',
-                'author' => 'Nici'
+                'date' => 'January 2, 2021',
+                'author' => 'Juss',
             ],
             [
                 'title' => 'Some world title 3',
                 'content' => 'Some world content 3',
-                'date' => 'September 20, 2007',
-                'author' => 'Trivurr'
+                'date' => 'January 3, 2021',
+                'author' => 'Alex',
             ],
             [
                 'title' => 'Some world title 4',
                 'content' => 'Some world content 4',
-                'date' => 'December 28, 2012',
-                'author' => 'Ronald'
+                'date' => 'January 4, 2021',
+                'author' => 'Manivald',
             ],
         ];
         include __DIR__ . '/../views/index.php';
-        break;
-    case '/us':
+});
+
+Router::addRoute('/us', function () {
         $title = 'U.S';
         $posts = [
             [
                 'title' => 'Some U.S title 1',
                 'content' => 'Some U.S content 1',
-                'date' => 'June 26, 2008',
-                'author' => 'Biku'
+                'date' => 'January 1, 2021',
+                'author' => 'Pets',
             ],
             [
                 'title' => 'Some U.S title 2',
                 'content' => 'Some U.S content 2',
-                'date' => 'January 5, 2007',
-                'author' => 'Nici'
+                'date' => 'January 2, 2021',
+                'author' => 'Juss',
             ],
             [
                 'title' => 'Some U.S title 3',
                 'content' => 'Some U.S content 3',
-                'date' => 'September 20, 2007',
-                'author' => 'Trivurr'
+                'date' => 'January 3, 2021',
+                'author' => 'Alex',
             ],
             [
                 'title' => 'Some U.S title 4',
                 'content' => 'Some U.S content 4',
-                'date' => 'December 28, 2012',
-                'author' => 'Ronald'
+                'date' => 'January 4, 2021',
+                'author' => 'Manivald',
             ],
         ];
         include __DIR__ . '/../views/us.php';
-        break;
-    case '/tech':
-        $title = 'Tech';
-        $posts = [
-            [
-                'title' => 'Some tech title 1',
-                'content' => 'Some tech content 1',
-                'date' => 'September 17, 2006',
-                'author' => 'Riksuu',
-            ],
+});
 
-            [
-                'title' => 'Some tech title 2',
-                'content' => 'Some tech content 2',
-                'date' => 'April 1, 2001',
-                'author' => 'Aniga',
-            ],
-
-            [
-                'title' => 'Some tech title 3',
-                'content' => 'Some tech content 3',
-                'date' => 'January 3, 2009',
-                'author' => 'Kassu',
-            ],
-
-            [
-                'title' => 'Some tech title 4',
-                'content' => 'Some tech content 4',
-                'date' => 'August 29, 2017',
-                'author' => 'Anksu',
-            ],
-        ];
-        include __DIR__ . '/../views/tech.php';
-        break;
-    default:
-        echo '404';
+$router = new Router($_SERVER['REQUEST_URI']);
+$match = $router->match();
+if($match) {
+    call_user_func($match['action']);
+} else {
+    echo 404;
 }
+
+// switch ($_SERVER['REQUEST_URI']) {
+//     case '/':
+//         $title = 'World';
+//         $posts = [
+//             [
+//                 'title' => 'Some world title 1',
+//                 'content' => 'Some world content 1',
+//                 'date' => 'January 1, 2021',
+//                 'author' => 'Pets',
+//             ],
+//             [
+//                 'title' => 'Some world title 2',
+//                 'content' => 'Some world content 2',
+//                 'date' => 'January 2, 2021',
+//                 'author' => 'Juss',
+//             ],
+//             [
+//                 'title' => 'Some world title 3',
+//                 'content' => 'Some world content 3',
+//                 'date' => 'January 3, 2021',
+//                 'author' => 'Alex',
+//             ],
+//             [
+//                 'title' => 'Some world title 4',
+//                 'content' => 'Some world content 4',
+//                 'date' => 'January 4, 2021',
+//                 'author' => 'Manivald',
+//             ],
+//         ];
+//         include __DIR__ . '/../views/index.php';
+//         break;
+//     case '/us':
+//         $title = 'U.S';
+//         $posts = [
+//             [
+//                 'title' => 'Some U.S title 1',
+//                 'content' => 'Some U.S content 1',
+//                 'date' => 'January 1, 2021',
+//                 'author' => 'Pets',
+//             ],
+//             [
+//                 'title' => 'Some U.S title 2',
+//                 'content' => 'Some U.S content 2',
+//                 'date' => 'January 2, 2021',
+//                 'author' => 'Juss',
+//             ],
+//             [
+//                 'title' => 'Some U.S title 3',
+//                 'content' => 'Some U.S content 3',
+//                 'date' => 'January 3, 2021',
+//                 'author' => 'Alex',
+//             ],
+//             [
+//                 'title' => 'Some U.S title 4',
+//                 'content' => 'Some U.S content 4',
+//                 'date' => 'January 4, 2021',
+//                 'author' => 'Manivald',
+//             ],
+//         ];
+//         include __DIR__ . '/../views/us.php';
+//         break;
+//     default:
+//         echo '404';
+// }
