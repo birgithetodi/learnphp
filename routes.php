@@ -1,0 +1,96 @@
+<?php
+
+use App\Router;
+
+Router::addRoute('/', function () {
+        $title = 'World';
+        $posts = [
+            [
+                'title' => 'Some world title 1',
+                'content' => 'Some world content 1',
+                'date' => 'January 1, 2021',
+                'author' => 'Pets',
+            ],
+            [
+                'title' => 'Some world title 2',
+                'content' => 'Some world content 2',
+                'date' => 'January 2, 2021',
+                'author' => 'Juss',
+            ],
+            [
+                'title' => 'Some world title 3',
+                'content' => 'Some world content 3',
+                'date' => 'January 3, 2021',
+                'author' => 'Alex',
+            ],
+            [
+                'title' => 'Some world title 4',
+                'content' => 'Some world content 4',
+                'date' => 'January 4, 2021',
+                'author' => 'Manivald',
+            ],
+        ];
+        include __DIR__ . '/views/index.php';
+});
+
+Router::addRoute('/us', function () {
+        $title = 'U.S';
+        $posts = [
+            [
+                'title' => 'Some U.S title 1',
+                'content' => 'Some U.S content 1',
+                'date' => 'January 1, 2021',
+                'author' => 'Pets',
+            ],
+            [
+                'title' => 'Some U.S title 2',
+                'content' => 'Some U.S content 2',
+                'date' => 'January 2, 2021',
+                'author' => 'Juss',
+            ],
+            [
+                'title' => 'Some U.S title 3',
+                'content' => 'Some U.S content 3',
+                'date' => 'January 3, 2021',
+                'author' => 'Alex',
+            ],
+            [
+                'title' => 'Some U.S title 4',
+                'content' => 'Some U.S content 4',
+                'date' => 'January 4, 2021',
+                'author' => 'Manivald',
+            ],
+        ];
+        include __DIR__ . '/views/us.php';
+});
+
+Router::addRoute('/tech', function () {
+        $title = 'Technology';
+        $posts = [
+            [
+                'title' => 'Some Technology title 1',
+                'content' => 'Some Technology content 1',
+                'date' => 'January 1, 2021',
+                'author' => 'Pets',
+            ],
+            [
+                'title' => 'Some Technology title 2',
+                'content' => 'Some Technology content 2',
+                'date' => 'January 2, 2021',
+                'author' => 'Juss',
+            ],
+            [
+                'title' => 'Some Technology title 3',
+                'content' => 'Some Technology content 3',
+                'date' => 'January 3, 2021',
+                'author' => 'Alex',
+            ],
+            [
+                'title' => 'Some Technology title 4',
+                'content' => 'Some Technology content 4',
+                'date' => 'January 4, 2021',
+                'author' => 'Manivald',
+            ],
+        ];
+        include __DIR__ . '/views/tech.php';
+});
