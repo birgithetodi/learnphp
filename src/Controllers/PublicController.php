@@ -94,5 +94,7 @@ public function tech() {
     ];
     view('tech', compact('title', 'posts'));
 }
+public function forms() {
+        view('forms');
+        }
 };
-
