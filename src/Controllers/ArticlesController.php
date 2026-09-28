@@ -2,19 +2,19 @@
 
 namespace App\Controllers;
 
+
 use App\Models\Article;
 
 class ArticlesController
 {
-    public function index()
-    {
+    public function index() {
         $articles = Article::all();
         $title = 'Articles';
         view('articles/index', compact('title', 'articles'));
     }
 
     public function create() {
-        $title = "New Article";
+        $title = 'New Article';
         view('articles/create', compact('title'));
     }
 
@@ -29,6 +29,11 @@ class ArticlesController
     }
 
     public function view() {
-        dump($_GET['id']);
+        $article = Article::find($_GET['id']);
+        if($article) {
+            view('articles/view', compact('article'));
+        } else {
+            echo 404;
+        }
     }
 }
