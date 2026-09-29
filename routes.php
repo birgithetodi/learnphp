@@ -1,7 +1,7 @@
 <?php
 
-use App\AuthController;
 use App\Controllers\ArticlesController;
+use App\Controllers\AuthController;
 use App\Controllers\PublicController;
 use App\Router;
 
