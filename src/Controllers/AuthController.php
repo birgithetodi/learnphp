@@ -10,12 +10,11 @@ class AuthController
     {
         view('auth/login');
     }
-
     public function login()
     {
         $user = User::where('email', $_POST['email']);
         $user = $user ? $user[0] : null;
-        if (!$user || $user->password !== $_POST['password']) {
+        if (!$user || !password_verify($_POST['password'], $user->password)) {
             return redirect('/login');
         }
         $_SESSION['userID'] = $user->id;
@@ -36,12 +35,13 @@ class AuthController
         $user = new User();
         $user->name = $_POST['name'];
         $user->email = $_POST['email'];
-        $user->password = $_POST['password'];
+        $user->password = password_hash($_POST['password'], PASSWORD_BCRYPT);
         $user->save();
         redirect('/login');
     }
 
-    public function logout() {
+    public function logout()
+    {
         unset($_SESSION['userID']);
         redirect('/');
     }
