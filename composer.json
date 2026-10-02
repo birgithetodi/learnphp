@@ -1,0 +1,19 @@
+{
+    "name": "intel/learnphp",
+    "type": "project",
+    "license": "WTFPL",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Birgithe Todi",
+            "email": "birgithe.todi@tptlive.ee"
+        }
+    ],
+    "require": {
+        "symfony/var-dumper": "^8.1"
+    }
+}
